@@ -11,3 +11,45 @@ body {
     height:100vh;
     align-items: center;
 }
+.container {
+    width:800px;
+    max-width:80%;
+    background-color: #93877e;
+    border-radius: 5px;
+    padding:10px;
+}
+.btn {
+    display:grid;
+    grid-template-columns: auto;
+    gap:10px;
+    margin:20px 0;
+}
+button {
+    border-radius: 5px;
+    padding:5px 10px;
+    color:black;
+    background-color: #5b683f;
+    border: none;
+}
+button:hover {
+    background-color: #384b1a;
+}
+.btn.correct {
+    background-color: avocado;
+}
+.btn.wrong {
+    background-color: #D2122E;
+}
+#start, #next {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 10px 20px;
+}
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.hide {
+    display: none;
+}
