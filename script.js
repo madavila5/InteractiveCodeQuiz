@@ -22,7 +22,7 @@ function start(){
 }
 //this function should set up the next question
 function nextQ (){
-    reset()
+    reset
     qVisible(qShuffle[qIndex])
 
 }
@@ -41,6 +41,44 @@ function qVisible(question){
     });
 }
 //deleted section here because it was not working
+function reset(){
+    clearStatusClass(document.body)
+     nextbtn.classList.add('hide')
+     while (ansElement.firstChild){
+         ansElement.removeChild(ansElement.firstChild)
+     }
+}// thi function should set up the answer
+
+function ans(){
+ const selectbtn= EventTarget
+ const correct = selectbtn.dataset.correct
+ setStatusClass(document.body, correct)
+ Array.from(ansElement.children).forEach (button => {
+     setStatusClass(button, button.dataset.correct)
+ })
+ if (qShuffle.length > qIndex +1){
+     nextbtn.classList.remove('hide')
+ } else {
+     startbtn.innerText = "Restart"
+     startbtn.classList.remove('hide')
+ }
+ nextbtn.classList.remove('hide')
+}
+
+
+function setStatusClass (element,correct){
+    clearStatusClass(element)
+    if (correct){
+        element.classList.add('correct')
+    } else {
+        element.classList.add('wrong')
+    }
+}
+function clearStatusClass(element){
+    element.classList.remove('correct')
+    element.classList.remove('wrong')
+}
+
 const questions = [
     {
         question: "What is the correct way to connect script?",
