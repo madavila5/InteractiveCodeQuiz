@@ -1,9 +1,9 @@
 
-const startbtn = document.getElementById("start")
-const nextbtn = document.getElementById('next')
-const qcontainerEl = document.getElementById('qcontainer')
-const qElement = document.getElementById('question')
-const ansElement = document.getElementById ('answerbtn');
+var startbtn = document.getElementById("start")
+var nextbtn = document.getElementById('highScore')
+var qcontainerEl = document.getElementById('qcontainer')
+var qElement = document.getElementById('question')
+var ansElement = document.getElementById ('answerbtn');
 
 let qShuffle, qIndex
 startbtn.addEventListener('click', start);
@@ -19,14 +19,9 @@ function start(){
     qIndex = 0
     document.getElementById('qContainer').classList.remove('hide')
     nextQ()
+
 }
 //this function should set up the next question
-function nextQ (){
-    reset
-    qVisible(qShuffle[qIndex])
-
-}
-
 function qVisible(question){
     qElement.innerText = question.question
     question.answer.forEach(answer => {
@@ -41,13 +36,13 @@ function qVisible(question){
     });
 }
 //the reset is not working
-function reset(){
+function replay(){
     clearStatusClass(document.body)
      nextbtn.classList.add('hide')
      while (ansElement.firstChild){
          ansElement.removeChild(ansElement.firstChild)
      }
-}// thi function should set up the answer
+}
 
 function ans(){
  const selectbtn= EventTarget
@@ -64,9 +59,10 @@ function ans(){
  }
  nextbtn.classList.remove('hide')
 }
+// this section will focus on Score 
+function scoreVis()
 
-
-function setStatusClass (element,correct){
+function highScore (element,correct){
     clearStatusClass(element)
     if (correct){
         element.classList.add('correct')
@@ -74,55 +70,52 @@ function setStatusClass (element,correct){
         element.classList.add('wrong')
     }
 }
-function clearStatusClass(element){
+function hsVis(element){
     element.classList.remove('correct')
     element.classList.remove('wrong')
 }
 
-const questions = [
+startbtn.addEventListener("click",start)
+//var with all the questions
+var questions = [
     {
         question: "What is the correct way to connect script?",
-        answer: [
-            {text:"<script src='script.js'></script>",correct: true},
-            {text:"<style src='script.js'></style>",correct: false},
-            {text:"<link src='script.js'></link>",correct: false},
-            {text:"connect src='script.js'></connect>",correct: false},
-        ]
+            optA:"<script src='script.js'></script>",
+            optB:"<style src='script.js'></style>",
+            optC:"<link src='script.js'></link>",
+            optD:"connect src='script.js'></connect>",
+            answer:"a"
     },
     {
         question: "What is the correct way to connect stylesheet?",
-        answer: [
-            {text:"<link href='style.css' rel='stylesheet'>",correct: true},
-            {text:"<link href=style.css rel='stylesheet'>",correct: false},
-            {text:"<connect href='style.css' rel=stylesheet>",correct: false},
-            {text:"<link rel=stylesheet>",correct: false},
-        ]
+            optA:"<connect href='style.css' rel=stylesheet>",
+            optB:"<link href=style.css rel='stylesheet'>",
+            optC:"<link href='style.css' rel='stylesheet'>",
+            optD:"<link rel=stylesheet>",
+            answer:"c"
     },
     {
         question: "What does CSS stand for?",
-        answer: [
-            {text:"Cascading Style Sheet",correct: true},
-            {text:"Computer Style Sheet",correct: false},
-            {text:"Computer Sample Sheet",correct: false},
-            {text:"Cascading Sample Sheet",correct: false},
-        ]
+            optA:"Computer Sample Sheet",
+            optB:"Computer Style Sheet",
+            optC:"Cascading Style Sheet",
+            optD:"Cascading Sample Sheet",
+            answer:"c"
     },
     {
         question: "What does HTML stand for?",
-        answer: [
-            {text:"Hyper Text Markup Language",correct: true},
-            {text:"Hyperlink Tag Mark Language",correct: false},
-            {text:"Hyper Tag Madeup Language",correct: false},
-            {text:"Hyperlink Text Madeup Language",correct: false},
-        ]
+            optA:"Hyperlink Text Madeup Language",
+            optB:"Hyperlink Tag Mark Language",
+            optC:"Hyper Tag Madeup Language",
+            optD:"Hyper Text Markup Language",
+            answer:"d"
     },
     {
         question: "What does div tag define?",
-        answer: [
-            {text:"division",correct: true},
-            {text:"divident",correct: false},
-            {text:"divice",correct: false},
-            {text:"divoid",correct: false},
-        ]
+            optA:"divident",
+            optB:"division",
+            optC:"divice",
+            optD:"divoid",
+            answer:"b"
     }
-]
+];
