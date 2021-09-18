@@ -14,65 +14,35 @@ nextbtn.addEventListener('click',()=> {
 
 //this function is to make the game start
 function start(){
-    startbtn.classList.add('hide')
-    qShuffle = questions.sort(() => Math.random()-.5)
-    qIndex = 0
-    document.getElementById('qContainer').classList.remove('hide')
-    nextQ()
+    qVisible()
+    document.getElementById("gameEnd").display = "none";
+    document.getElementById("startDisplay").display="none";
+ //timer need to be included somewhere
 
 }
 //this function should set up the next question
-function qVisible(question){
-    qElement.innerText = question.question
-    question.answer.forEach(answer => {
-        const button = document.createElement ('button')
-        button.innerText = answer.text
-        button.classList.add('btn')
-        if (answer.correct){
-            button.dataset.correct = answer.correct
-        }
-        button.addEventListener('click',ans)
-        ansElement.appendChild(button)
-    });
+function qVisible(){
+  
 }
 //the reset is not working
 function replay(){
-    clearStatusClass(document.body)
-     nextbtn.classList.add('hide')
-     while (ansElement.firstChild){
-         ansElement.removeChild(ansElement.firstChild)
-     }
+    document.getElementById('gameEnd').style.display="none"
 }
 
-function ans(){
- const selectbtn= EventTarget
- const correct = selectbtn.dataset.correct
- setStatusClass(document.body, correct)
- Array.from(ansElement.children).forEach (button => {
-     setStatusClass(button, button.dataset.correct)
- })
- if (qShuffle.length > qIndex +1){
-     nextbtn.classList.remove('hide')
- } else {
-     startbtn.innerText = "Restart"
-     startbtn.classList.remove('hide')
- }
- nextbtn.classList.remove('hide')
-}
+function ans(answer){
+
 // this section will focus on Score 
-function scoreVis()
+function scoreVis(){
+    qcontainerEl.style.display="none";
+    gameEnd.style.display="flex";
+
+}
 
 function highScore (element,correct){
-    clearStatusClass(element)
-    if (correct){
-        element.classList.add('correct')
-    } else {
-        element.classList.add('wrong')
-    }
+   
 }
 function hsVis(element){
-    element.classList.remove('correct')
-    element.classList.remove('wrong')
+    
 }
 
 startbtn.addEventListener("click",start)
