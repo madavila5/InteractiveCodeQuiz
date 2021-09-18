@@ -26,21 +26,24 @@
             <div id="result"></div>
         </div>    
         <div id="hsContainer">
-            <div id="row">
-                <h2>Initials</h2>
-                <h2>Score</h2>
+            <div id="hsBox">
+                <div id="row">
+                    <h2>Initials</h2>
+                    <h2>Score</h2>
+                </div>
+                <div id="hsInitial"></div>
+                <div id="hScore"></div>
             </div>
-            <div id="hsInitial"></div>
-            <div id="hScore"></div>
+            <div id="replay">
+                <button id="again" onclick="replay()">Play Again</button>
+            </div>
         </div>
         <div id="gameEnd">
             <div id="finalScore"></div>
             <input type="text" size="30" id="initials" placeholder="Your Initials"/>
             <button id="addScore">Add My Score</button>
         </div>
-        <div id="replay">
-            <button id="again" onclick="replay()">Play Again</button>
-        </div>
+       
     </div>
     
 </body>
