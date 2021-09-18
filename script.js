@@ -1,30 +1,75 @@
 var startbtn = document.getElementById("start")
 var nextbtn = document.getElementById('highScore')
-var qcontainerEl = document.getElementById('qcontainer')
+var qcontainerEl = document.getElementById('qContainer')
 var qElement = document.getElementById('question')
 var ansElement = document.getElementById ('answerbtn');
 var timeleft = 30;
-
+//Variable with Questions
+var questions = [
+    {
+        question: "What is the correct way to connect script?",
+            optA:"<script src='script.js'></script>",
+            optB:"<style src='script.js'></style>",
+            optC:"<link src='script.js'></link>",
+            optD:"connect src='script.js'></connect>",
+            answer:"a"
+    },
+    {
+        question: "What is the correct way to connect stylesheet?",
+            optA:"<connect href='style.css' rel=stylesheet>",
+            optB:"<link href=style.css rel='stylesheet'>",
+            optC:"<link href='style.css' rel='stylesheet'>",
+            optD:"<link rel=stylesheet>",
+            answer:"c"
+    },
+    {
+        question: "What does CSS stand for?",
+            optA:"Computer Sample Sheet",
+            optB:"Computer Style Sheet",
+            optC:"Cascading Style Sheet",
+            optD:"Cascading Sample Sheet",
+            answer:"c"
+    },
+    {
+        question: "What does HTML stand for?",
+            optA:"Hyperlink Text Madeup Language",
+            optB:"Hyperlink Tag Mark Language",
+            optC:"Hyper Tag Madeup Language",
+            optD:"Hyper Text Markup Language",
+            answer:"d"
+    },
+    {
+        question: "What does div tag define?",
+            optA:"divident",
+            optB:"division",
+            optC:"divice",
+            optD:"divoid",
+            answer:"b"
+    }
+];
 //this function is to make the game start
 var qIndex = 0;
 var endIndex = questions.length;
 var time;
+var score =0;
+var correct;
 function start(){
     qVisible()
-    document.getElementById("gameEnd").display = "none";
-    document.getElementById("startDisplay").display="none";
+    document.getElementById("gameEnd").style.display = "none";
+    document.getElementById("startDisplay").style.display="none";
  //timer need to be included somewhere
     time = setInterval(function(){
         timeleft--;
-        document.getElementById(timer).textContent = "Time left:" + timeleft;
+        document.getElementById("timer").textContent = "Time left:" + timeleft;
         if(timeleft === 0){
-            delInterval(time);
-            scoreVis();
+           scoreVis(); 
+           delInterval(time);
+            
         }
     },1000);
         qcontainerEl.style.display="block";
 }
-//this function should set up the next question
+//this function should set up questions
 function qVisible(){
     document.getElementById('gameEnd').style.display="none";
     if (qIndex === endIndex){
@@ -47,7 +92,7 @@ function replay(){
     timeleft= 30;
 }
 //this to check answers
-var correct;
+
 function ans(answer){
     correct = questions[qIndex].answer
     if(answer === correct && qIndex !== endIndex){
@@ -63,7 +108,6 @@ function ans(answer){
 }
 
 // this section will focus on Score 
-var score = 0;
 function scoreVis(){
     qcontainerEl.style.display="none";
     gameEnd.style.display="flex";
@@ -118,45 +162,3 @@ function hsVis(){
 
 startbtn.addEventListener("click",start)
 //var with all the questions
-var questions = [
-    {
-        question: "What is the correct way to connect script?",
-            optA:"<script src='script.js'></script>",
-            optB:"<style src='script.js'></style>",
-            optC:"<link src='script.js'></link>",
-            optD:"connect src='script.js'></connect>",
-            answer:"a"
-    },
-    {
-        question: "What is the correct way to connect stylesheet?",
-            optA:"<connect href='style.css' rel=stylesheet>",
-            optB:"<link href=style.css rel='stylesheet'>",
-            optC:"<link href='style.css' rel='stylesheet'>",
-            optD:"<link rel=stylesheet>",
-            answer:"c"
-    },
-    {
-        question: "What does CSS stand for?",
-            optA:"Computer Sample Sheet",
-            optB:"Computer Style Sheet",
-            optC:"Cascading Style Sheet",
-            optD:"Cascading Sample Sheet",
-            answer:"c"
-    },
-    {
-        question: "What does HTML stand for?",
-            optA:"Hyperlink Text Madeup Language",
-            optB:"Hyperlink Tag Mark Language",
-            optC:"Hyper Tag Madeup Language",
-            optD:"Hyper Text Markup Language",
-            answer:"d"
-    },
-    {
-        question: "What does div tag define?",
-            optA:"divident",
-            optB:"division",
-            optC:"divice",
-            optD:"divoid",
-            answer:"b"
-    }
-];
