@@ -27,6 +27,15 @@ function start(){
 //this function should set up the next question
 function qVisible(){
     document.getElementById('gameEnd').style.display="none";
+    if (qIndex === endIndex){
+        return scoreVis();
+    }
+    var theQuestion = questions[qIndex];
+    qElement.innerHTML = "<p>" + theQuestion.question + "</p>";
+    document.getElementById("a").innerHTML = theQuestion.optA;
+    document.getElementById("b").innerHTML = theQuestion.optB;
+    document.getElementById("c").innerHTML = theQuestion.optC;
+    document.getElementById("d").innerHTML = theQuestion.optD;
 }
 //This to stop display and replay
 function replay(){
@@ -34,7 +43,8 @@ function replay(){
     score = 0;
     document.getElementById('gameEnd').style.display="none"
     document.getElementById("startDisplay").style.display ="flex";
-    document.getElementById("hsContainer").style.display="none"
+    document.getElementById("hsContainer").style.display="none";
+    timeleft= 30;
 }
 //this to check answers
 var correct;
@@ -58,11 +68,43 @@ function scoreVis(){
     qcontainerEl.style.display="none";
     gameEnd.style.display="flex";
     delInterval(time);
-    document.getElementById("hsInitial").value = "";
+    document.getElementById("initials").value = "";
+    document.getElementById("finalScore").innerHTML = 
+        "You got " + score + " out of " + questions.length + " CORRECT!";
 }
+document.getElementById("addScore").addEventListener("click", function highscores(){
+    if(document.getElementById('initials').value === ""){
+        alert("You MUST Input Initials to ADD");
+        return false;
+    } else{
+        var savedHS = JSON.parse(localStorage.getItem("savedHS")) || [];
+        var user = document.getElementById("initials").value.trim();
+        var userHS = {
+            name : user, score: score
+        }; 
+        document.getElementById("gameEnd").style.display = "none";
+        document.getElementById("hsContainer").style.display = "flex";
+        document.getElementById("hsBox").style.display = "block";
+        document.getElementById("replay").style.display = "flex";
+        
+        savedHS.push(userHS);
+        localStorage.setItem("savedHS", JSON.stringify(savedHS));
+        highScore();    
+    }
+})
 
 function highScore (){
-   
+   document.getElementById("hsInitial").innerHTML= "";
+   document.getElementById("hScore").innerHTML="";
+   var hs = JSON.parse(localStorage.getItem("savedHS")) || [];
+   for (i=0; i<hs.length; i++){
+       var newName = document.createElement("li");
+       var newScore = document.createElement("li");
+       newName.textContent = hs[i].name;
+       newScore.textContent = hs[i].score;
+       document.getElementById("hsInitial").appendChild(newName);
+       document.getElementById("hScore").appendChild(newScore);
+   }
 }
 //hides start and end, shows high score
 function hsVis(){
