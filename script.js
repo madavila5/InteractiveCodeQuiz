@@ -17,8 +17,12 @@ function start(){
     time = setInterval(function(){
         timeleft--;
         document.getElementById(timer).textContent = "Time left:" + timeleft;
+        if(timeleft === 0){
+            delInterval(time);
+            scoreVis();
+        }
+    },1000);
         qcontainerEl.style.display="block";
-    })
 }
 //this function should set up the next question
 function qVisible(){
@@ -36,6 +40,16 @@ function replay(){
 var correct;
 function ans(answer){
     correct = questions[qIndex].answer
+    if(answer === correct && qIndex !== endIndex){
+        score++;
+        alert("You got that RIGHT!!");
+        qIndex++;
+        qVisible();
+    } else if (answer !== correct && qIndex !== endIndex){
+        alert("You got that WRONG!");
+        qIndex++;
+        qVisible();
+    } else{scoreVis();}
 }
 
 // this section will focus on Score 
@@ -43,13 +57,15 @@ var score = 0;
 function scoreVis(){
     qcontainerEl.style.display="none";
     gameEnd.style.display="flex";
-
+    delInterval(time);
+    document.getElementById("hsInitial").value = "";
 }
 
 function highScore (){
    
 }
-function hsVis(element){
+//hides start and end, shows high score
+function hsVis(){
     document.getElementById("startDisplay").style.display ="none";
     document.getElementById("gameEnd").style.display ="none";
     document.getElementById("hsContainer").style.display ="flex";
