@@ -5,12 +5,6 @@ var qcontainerEl = document.getElementById('qcontainer')
 var qElement = document.getElementById('question')
 var ansElement = document.getElementById ('answerbtn');
 
-let qShuffle, qIndex
-startbtn.addEventListener('click', start);
-nextbtn.addEventListener('click',()=> {
-    qIndex++
-    nextQ()
-} )
 
 //this function is to make the game start
 function start(){
@@ -24,12 +18,19 @@ function start(){
 function qVisible(){
   
 }
-//the reset is not working
+//This to stop display and replay
 function replay(){
+    qIndex = 0;
+    score = 0;
     document.getElementById('gameEnd').style.display="none"
+    document.getElementById("startDisplay").style.display ="flex";
+    document.getElementById("hsContainer").style.display="none"
 }
-
+//this to check answers
+var correct;
 function ans(answer){
+    correct = questions[qIndex].answer
+}
 
 // this section will focus on Score 
 function scoreVis(){
@@ -38,11 +39,11 @@ function scoreVis(){
 
 }
 
-function highScore (element,correct){
+function highScore (){
    
 }
 function hsVis(element){
-    
+    document.getElementById("")
 }
 
 startbtn.addEventListener("click",start)
