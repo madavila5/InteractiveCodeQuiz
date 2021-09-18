@@ -6,7 +6,7 @@ const qElement = document.getElementById('question')
 const ansElement = document.getElementById ('answerbtn');
 
 let qShuffle, qIndex
-document.getElementById('start').addEventListener('click', start);
+startbtn.addEventListener('click', start);
 nextbtn.addEventListener('click',()=> {
     qIndex++
     nextQ()
@@ -40,7 +40,7 @@ function qVisible(question){
         ansElement.appendChild(button)
     });
 }
-//deleted section here because it was not working
+//the reset is not working
 function reset(){
     clearStatusClass(document.body)
      nextbtn.classList.add('hide')

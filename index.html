@@ -10,19 +10,38 @@
 </head>
 <body>
     <div class="container">
-        <div id= "qContainer" class="hide">
-            <div id="timer"></div>
-            <div id="question">Question</div>
-            <div id="answerbtn">
-                <button class="btn">Option 1</button>
-                <button class="btn">Option 2</button>
-                <button class="btn">Option 3</button>
-                <button class="btn">Option 4</button>
-            </div>
+        <h1>CODE QUIZ</h1>
+        <p>You have 30 seconds to finish this Quiz.</p>
+
+        <div id= "qContainer" >
+            <div id="timer">Time left:</div>
+            <div id="question"><p>Question</p></div>
+                <button class="btn1" onclick="check('btn1')">Option 1</button>
+                <button class="btn2" onclick="check('btn2')">Option 2</button>
+                <button class="btn3" onclick="check('btn3')">Option 3</button>
+                <button class="btn4" onclick="check('btn4')">Option 4</button>
+            <div id="result"></div>
         </div>    
         <div class= "controls">
             <button id="start">Start</button>
+            <button id="highScore" onclick="showHS()">High Score</button>
             <button id="next" class="hide">Next</button>
+        </div>
+        <div id="hsContainer">
+            <div id="row">
+                <h2>Initials</h2>
+                <h2>Score</h2>
+            </div>
+            <div id="hsInitial"></div>
+            <div id="hScore"></div>
+        </div>
+        <div id="gameEnd">
+            <div id="finalScore"></div>
+            <input type="text" size="30" id="initials" placeholder="Your Initials"/>
+            <button id="addScore">Add My Score</button>
+        </div>
+        <div id="replay">
+            <button id="again" onclick="replay()">Play Again</button>
         </div>
     </div>
     

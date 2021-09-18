@@ -17,6 +17,7 @@ body {
     background-color: #93877e;
     border-radius: 5px;
     padding:10px;
+    text-align: center;
 }
 .btn {
     display:grid;
@@ -52,4 +53,11 @@ button:hover {
 }
 .hide {
     display: none;
+}
+h1 {
+    font-weight: bold;
+    font-size: 35px;
+}
+.timer {
+    display: block;
 }
