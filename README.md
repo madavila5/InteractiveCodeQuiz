@@ -17,7 +17,8 @@ Interactive Code Quiz
 
 <img src="Images/CodeQuiz1.png" alt="Code Quiz Start Screen">
 <img src="Images/CodeQuiz2.png" alt="First Question">
-<img src="Images/CodeQuiz3.png" alt="Game Over Screen">
+<img src="Images/CodeQuiz3.png" alt="Right Answer Alert">
+<img src="Images/CodeQuiz4.png" alt="High Score Screen">
 
 
 # Link
