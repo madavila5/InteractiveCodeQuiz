@@ -8,18 +8,18 @@ var timeleft = 30;
 var questions = [
     {
         question: "What is the correct way to connect script?",
-            optA:"<script src='script.js'></script>",
-            optB:"<style src='script.js'></style>",
-            optC:"<link src='script.js'></link>",
+            optA:" script src='script.js'></script>",
+            optB:" style src='script.js'></style>",
+            optC:" link src='script.js'></link>",
             optD:"connect src='script.js'></connect>",
             answer:"a"
     },
     {
         question: "What is the correct way to connect stylesheet?",
-            optA:"<connect href='style.css' rel=stylesheet>",
-            optB:"<link href=style.css rel='stylesheet'>",
-            optC:"<link href='style.css' rel='stylesheet'>",
-            optD:"<link rel=stylesheet>",
+            optA:"connect href='style.css' rel=stylesheet>",
+            optB:"link href=style.css rel='stylesheet'>",
+            optC:"link href='style.css' rel='stylesheet'>",
+            optD:"link rel=stylesheet>",
             answer:"c"
     },
     {
