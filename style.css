@@ -43,7 +43,7 @@ button {
 button:hover {
     background-color: #384b1a;
 }
-#start, #highScore, #again,#addScore{
+#start, #highScore, #again,#addScore,#empty{
     font-size: 1.5rem;
     font-weight: bold;
     padding: 10px 20px;

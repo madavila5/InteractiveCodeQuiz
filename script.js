@@ -3,7 +3,7 @@ var nextbtn = document.getElementById('highScore')
 var qcontainerEl = document.getElementById('qContainer')
 var qElement = document.getElementById('question')
 var ansElement = document.getElementById ('answerbtn');
-var timeleft = 30;
+var timeleft = 60;
 //Variable with Questions
 var questions = [
     {
@@ -64,7 +64,6 @@ function start(){
         if(timeleft === 0){
            scoreVis(); 
            delInterval(time);
-            
         }
     },1000);
         qcontainerEl.style.display="block";
@@ -89,10 +88,9 @@ function replay(){
     document.getElementById('gameEnd').style.display="none"
     document.getElementById("startDisplay").style.display ="flex";
     document.getElementById("hsContainer").style.display="none";
-    timeleft= 30;
+    timeleft= 60;
 }
 //this to check answers
-
 function ans(answer){
     correct = questions[qIndex].answer
     if(answer === correct && qIndex !== endIndex){
@@ -106,7 +104,6 @@ function ans(answer){
         qVisible();
     } else{scoreVis();}
 }
-
 // this section will focus on Score 
 function scoreVis(){
     qcontainerEl.style.display="none";
@@ -136,7 +133,6 @@ document.getElementById("addScore").addEventListener("click", function highscore
         highScore();    
     }
 })
-
 function highScore (){
    document.getElementById("hsInitial").innerHTML= "";
    document.getElementById("hScore").innerHTML="";
@@ -159,6 +155,9 @@ function hsVis(){
     document.getElementById("hsBox").style.display ="block";
     highScore();
 }
-
 startbtn.addEventListener("click",start)
-//var with all the questions
+function emptyScore(){
+    window.localStorage.clear();
+    highscoreDisplayName.textContent = "";
+    highscoreDisplayScore.textContent = "";
+}
